@@ -1,16 +1,16 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Console\Commands;
+namespace Muscobytes\Laravel\Takeads\Suite\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCurrency;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsMerchant;
-use Muscobytes\Laravel\Takeads\Coupons\Traits\Command\TableFormatter;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
 use Muscobytes\Laravel\TakeadsApi\TakeadsApi;
+use Muscobytes\Laravel\TraitsCollection\Console\Command\TableFormatter;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V2\Merchant\MerchantDto;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V2\Merchant\MerchantRequestParameters;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V2\Merchant\MerchantResponse;

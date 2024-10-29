@@ -1,6 +1,6 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Models;
+namespace Muscobytes\Laravel\Takeads\Suite\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Muscobytes\Laravel\Takeads\Coupons\Database\Factories\MerchantFactory;
-use Muscobytes\OzonSellerApi\Services\V3\Dto\Currency;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\MerchantFactory;
 
 /**
  * TakeadsMerchant
@@ -67,7 +66,7 @@ class TakeadsMerchant extends Model
 
     public function currency(): BelongsTo
     {
-        return $this->belongsTo(Currency::class);
+        return $this->belongsTo(TakeadsCurrency::class);
     }
 
 

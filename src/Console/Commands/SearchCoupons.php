@@ -1,17 +1,17 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Console\Commands;
+namespace Muscobytes\Laravel\Takeads\Suite\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCoupon;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsLanguage;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsMerchant;
-use Muscobytes\Laravel\Takeads\Coupons\Traits\Command\TableFormatter;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
 use Muscobytes\Laravel\TakeadsApi\TakeadsApi;
+use Muscobytes\Laravel\TraitsCollection\Console\Command\TableFormatter;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponSearchDto;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponSearchRequestParameters;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Database\Seeders;
+namespace Muscobytes\Laravel\Takeads\Suite\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCoupon;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCurrency;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsLanguage;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsMerchant;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
 
 class LocalSeeder extends Seeder
 {

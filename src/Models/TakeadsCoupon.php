@@ -1,6 +1,6 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Models;
+namespace Muscobytes\Laravel\Takeads\Suite\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
-use Muscobytes\Laravel\Takeads\Coupons\Database\Factories\CouponFactory;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CouponFactory;
 
 /**
  * TakeadsCountry

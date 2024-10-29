@@ -1,9 +1,9 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Database\Factories;
+namespace Muscobytes\Laravel\Takeads\Suite\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsLanguage;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
 
 /**
  * @extends Factory<TakeadsLanguage>

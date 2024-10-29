@@ -1,11 +1,11 @@
 <?php
 
-namespace Muscobytes\Laravel\Takeads\Coupons\Database\Factories;
+namespace Muscobytes\Laravel\Takeads\Suite\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsCurrency;
-use Muscobytes\Laravel\Takeads\Coupons\Models\TakeadsMerchant;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
+use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
 
 class MerchantFactory extends Factory
 {
