@@ -6,13 +6,12 @@
     "autoload": {
         "psr-4": {
             "Muscobytes\\Laravel\\Takeads\\Coupons\\": "src/",
-            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Factories\\": "database/factories/",
-            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-
+            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Factories\\": "database/factories/",
+            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "minimum-stability": "dev",
