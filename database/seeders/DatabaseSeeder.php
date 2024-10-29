@@ -10,7 +10,7 @@ use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
 use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
 use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
 
-class LocalSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
