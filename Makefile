@@ -2,7 +2,7 @@
 # SHELL = sh -xv
 
 PHP_VERSION = 8.2
-TAG := muscobytes/laravel-takeads/php-cli-$(PHP_VERSION)
+TAG := muscobytes/laravel-takeads-suite/php-cli-$(PHP_VERSION)
 
 .PHONY: help
 help:  ## Shows this help message
