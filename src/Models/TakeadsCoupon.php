@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CouponFactory;
+use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
 
 /**
  * TakeadsCountry
@@ -81,5 +82,50 @@ class TakeadsCoupon extends Model
     public function languages(): BelongsToMany
     {
         return $this->belongsToMany(TakeadsLanguage::class, 'takeads_coupon_language', 'coupon_id', 'language_id');
+    }
+
+
+    public static function updateOrCreateFromDto(CouponDto $couponDto): self
+    {
+        $coupon = self::updateOrCreate([
+            'external_id' => $couponDto->couponId
+        ], [
+            'is_active' => true,
+            'tracking_link' => $couponDto->trackingLink,
+            'name' => $couponDto->name,
+            'code' => $couponDto->code,
+            'merchant_id' => TakeadsMerchant::firstOrCreate([
+                'external_id' => $couponDto->merchantId
+            ], [
+                'is_active' => true,
+            ])->id,
+            'image_uri' => $couponDto->imageUri,
+            'start_date' => $couponDto->startDate,
+            'end_date' => $couponDto->endDate,
+            'description' => $couponDto->description,
+        ]);
+
+        $coupon->languages()->attach(array_map(
+            fn ($languageCode) => TakeadsLanguage::firstOrCreate([
+                'code' => $languageCode
+            ])->id,
+            $couponDto->languageCodes
+        ));
+
+        $coupon->countries()->attach(array_map(
+            fn ($countryId) => TakeadsCountry::firstOrCreate([
+                'code' => $countryId
+            ])->id,
+            $couponDto->countryCodes
+        ));
+
+        $coupon->categories()->attach(array_map(
+            fn ($categoryId) => TakeadsCategory::firstOrCreate([
+                'external_id' => $categoryId
+            ])->id,
+            $couponDto->categoryIds
+        ));
+
+        return $coupon;
     }
 }

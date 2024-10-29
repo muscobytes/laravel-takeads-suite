@@ -61,59 +61,22 @@ class SearchCoupons extends Command implements PromptsForMissingInput
             /** @var CouponSearchDto $iri */
             foreach ($response->getPayload() as $iri) {
                 /** @var CouponDto $coupon */
-                foreach ($iri->coupons as $coupon) {
+                foreach ($iri->coupons as $couponDto) {
                     $this->info(
                         $this->formatRow(
                             [
-                                $coupon->couponId,
-                                $coupon->code,
-                                $coupon->name,
-                                implode(',', $coupon->languageCodes),
-                                implode(',', $coupon->countryCodes),
-                                implode(',', $coupon->categoryIds)
+                                $couponDto->couponId,
+                                $couponDto->code,
+                                $couponDto->name,
+                                implode(',', $couponDto->languageCodes),
+                                implode(',', $couponDto->countryCodes),
+                                implode(',', $couponDto->categoryIds)
                             ],
                             [ 24, 12, 60, 10, 25 ]
                         )
                     );
                     if (!$this->option('dry')) {
-                        $taCoupon = TakeadsCoupon::updateOrCreate([
-                            'external_id' => $coupon->couponId
-                        ], [
-                            'is_active' => true,
-                            'tracking_link' => $coupon->trackingLink,
-                            'name' => $coupon->name,
-                            'code' => $coupon->code,
-                            'merchant_id' => TakeadsMerchant::firstOrCreate([
-                                'external_id' => $coupon->merchantId
-                            ], [
-                                'is_active' => true,
-                            ])->id,
-                            'image_uri' => $coupon->imageUri,
-                            'start_date' => $coupon->startDate,
-                            'end_date' => $coupon->endDate,
-                            'description' => $coupon->description,
-                        ]);
-
-                        $taCoupon->languages()->attach(array_map(
-                            fn ($languageCode) => TakeadsLanguage::firstOrCreate([
-                                'code' => $languageCode
-                            ])->id,
-                            $coupon->languageCodes
-                        ));
-
-                        $taCoupon->countries()->attach(array_map(
-                            fn ($countryId) => TakeadsCountry::firstOrCreate([
-                                'code' => $countryId
-                            ])->id,
-                            $coupon->countryCodes
-                        ));
-
-                        $taCoupon->categories()->attach(array_map(
-                            fn ($categoryId) => TakeadsCategory::firstOrCreate([
-                                'external_id' => $categoryId
-                            ])->id,
-                            $coupon->categoryIds
-                        ));
+                        TakeadsCoupon::updateOrCreateFromDto($couponDto);
                     }
                 }
             }
