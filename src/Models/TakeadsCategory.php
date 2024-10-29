@@ -39,12 +39,20 @@ class TakeadsCategory extends Model
 
     public function coupons(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsCoupon::class, 'takeads_coupon_country');
+        return $this->belongsToMany(
+            related: TakeadsCoupon::class,
+            table: 'takeads_coupon_category',
+            foreignPivotKey: 'category_id',
+            relatedPivotKey: 'coupon_id'
+        );
     }
 
 
     public function merchants(): BelongsTo
     {
-        return $this->belongsTo(TakeadsMerchant::class, 'category_id');
+        return $this->belongsTo(
+            related: TakeadsMerchant::class,
+            foreignKey: 'category_id'
+        );
     }
 }
