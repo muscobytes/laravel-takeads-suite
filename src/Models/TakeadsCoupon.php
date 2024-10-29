@@ -48,6 +48,12 @@ class TakeadsCoupon extends Model
     ];
 
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime'
+    ];
+
+
     protected static function newFactory(): CouponFactory
     {
         return CouponFactory::new();
