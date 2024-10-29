@@ -18,7 +18,7 @@ build:
 
 .PHONY: shell
 shell:
-	docker run -ti -v "$(shell pwd):/var/www/html" $(TAG) sh
+	docker run -ti -v "$(shell pwd):/var/www/html" -e PHP_IDE_CONFIG=serverName=localhost $(TAG) sh
 
 .PHONY: test
 test:
