@@ -5,6 +5,7 @@ namespace Muscobytes\Laravel\Takeads\Suite\Providers;
 use Generator;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Muscobytes\Laravel\Takeads\Suite\Console\Commands\ImportMerchants;
 use Muscobytes\Laravel\Takeads\Suite\Console\Commands\SearchCoupons;
 
