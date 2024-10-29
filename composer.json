@@ -1,0 +1,42 @@
+{
+    "name": "muscobytes/laravel-takeads",
+    "version": "1.0.0",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Muscobytes\\Laravel\\Takeads\\Coupons\\": "src/",
+            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Factories\\": "database/factories/",
+            "Muscobytes\\Laravel\\Takeads\\Coupons\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.2",
+        "laravel/framework": "^11.0",
+        "muscobytes/laravel-takeads-api-client": "^1.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory-implementation": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Muscobytes\\Laravel\\Takeads\\Coupons\\Providers\\TakeadsCouponsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require-dev": {
+        "nyholm/psr7": "^1.8",
+        "orchestra/testbench": "^9.5",
+        "symfony/http-client": "^7.1"
+    }
+}
