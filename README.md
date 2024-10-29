@@ -1,4 +1,4 @@
-# Takeads Coupons for Laravel
+# Takeads Suite for Laravel
 
 ## Database seeder
 
