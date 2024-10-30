@@ -55,9 +55,9 @@ class TakeadsCoupon extends Model
     ];
 
 
-    protected static function newFactory(): CouponFactory
+    public static function getTableName(): string
     {
-        return CouponFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupons');
     }
 
 

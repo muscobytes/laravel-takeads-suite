@@ -6,14 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public string $tableName = 'takeads_merchants';
+    public function getTableName(): string
+    {
+        return config('takeads.suite.table_prefix') . 'merchants';
+    }
+
 
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('external_id')->unique();
             $table->string('name')->nullable()->default(null);
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->tableName);
+        Schema::dropIfExists($this->getTableName());
     }
 };

@@ -23,16 +23,14 @@ class TakeadsCountry extends Model
     use HasFactory;
 
 
-    protected $table = 'takeads_countries';
-
     protected $fillable = [
         'code'
     ];
 
 
-    protected static function newFactory(): CountryFactory
+    public static function getTableName(): string
     {
-        return CountryFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.countries');
     }
 
 

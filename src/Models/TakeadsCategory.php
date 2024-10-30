@@ -24,16 +24,14 @@ class TakeadsCategory extends Model
     use HasFactory;
 
 
-    protected $table = 'takeads_categories';
-
     protected $fillable = [
         'external_id'
     ];
 
 
-    protected static function newFactory(): CategoryFactory
+    public static function getTableName(): string
     {
-        return CategoryFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.categories');
     }
 
 

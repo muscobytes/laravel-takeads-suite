@@ -6,12 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    public function getTableName(): string
+    {
+        return config('takeads.suite.table_prefix') . 'actions';
+    }
+
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('takeads_actions', function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->id();
             $table->uuid('external_id')->unique();
             $table->unsignedBigInteger('external_numeric_id');
@@ -47,11 +53,12 @@ return new class extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('takeads_actions');
+        Schema::dropIfExists($this->getTableName());
     }
 };

@@ -22,16 +22,14 @@ class TakeadsCurrency extends Model
     use HasFactory;
 
 
-    protected $table = 'takeads_currencies';
-
     protected $fillable = [
         'code'
     ];
 
 
-    protected static function newFactory(): CurrencyFactory
+    public static function getTableName(): string
     {
-        return CurrencyFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.currencies');
     }
 
 

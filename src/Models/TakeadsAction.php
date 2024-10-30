@@ -35,8 +35,6 @@ class TakeadsAction extends Model
 {
     use HasFactory;
 
-    protected $table = 'takeads_actions';
-
     protected $fillable = [
         'external_id',
         'external_numeric_id',
@@ -62,6 +60,12 @@ class TakeadsAction extends Model
         'remote_created_at' => 'datetime',
         'remote_updated_at' => 'datetime',
     ];
+
+
+    public static function getTableName(): string
+    {
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.actions');
+    }
 
 
     public function merchant(): BelongsTo

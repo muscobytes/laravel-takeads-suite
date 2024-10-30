@@ -41,7 +41,7 @@ class TakeadsSuiteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../../config/takeads-suite.php' => config_path('takeads-suite.php'),
+            __DIR__ . '/../../config/takeads.php' => config_path('takeads.php'),
         ]);
 
         if ($this->app->runningInConsole()) {
@@ -59,7 +59,7 @@ class TakeadsSuiteServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/takeads-suite.php', 'takeads-coupons'
+            __DIR__ . '/../../config/takeads.php', 'takeads'
         );
     }
 }

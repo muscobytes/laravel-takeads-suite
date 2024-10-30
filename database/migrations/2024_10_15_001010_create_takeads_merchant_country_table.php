@@ -6,13 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public string $tableName = 'takeads_merchant_country';
+    public function getTableName(): string
+    {
+        return config('takeads.suite.table_prefix') . 'merchant_country';
+    }
+
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->id();
             $table->foreignId('merchant_id')->constrained('takeads_merchants');
             $table->foreignId('country_id')->constrained('takeads_countries');
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->tableName);
+        Schema::dropIfExists($this->getTableName());
     }
 };

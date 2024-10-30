@@ -33,8 +33,6 @@ class TakeadsMerchant extends Model
     use HasFactory;
 
 
-    protected $table = 'takeads_merchants';
-
     protected $fillable = [
         'external_id',
         'name',
@@ -58,9 +56,9 @@ class TakeadsMerchant extends Model
     ];
 
 
-    protected static function newFactory(): MerchantFactory
+    public static function getTableName(): string
     {
-        return MerchantFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.merchants');
     }
 
 

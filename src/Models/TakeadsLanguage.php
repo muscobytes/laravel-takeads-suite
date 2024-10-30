@@ -20,16 +20,15 @@ class TakeadsLanguage extends Model
 {
     use HasFactory;
 
-    protected $table = 'takeads_languages';
 
     protected $fillable = [
         'code'
     ];
 
 
-    protected static function newFactory(): LanguageFactory
+    public static function getTableName(): string
     {
-        return LanguageFactory::new();
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.languages');
     }
 
 

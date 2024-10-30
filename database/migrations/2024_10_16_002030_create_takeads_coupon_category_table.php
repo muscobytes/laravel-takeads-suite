@@ -6,13 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public string $tableName = 'takeads_coupon_category';
+    public function getTableName(): string
+    {
+        return config('takeads.suite.table_prefix') . 'coupon_category';
+    }
+
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create($this->tableName, function (Blueprint $table) {
+        Schema::create($this->getTableName(), function (Blueprint $table) {
             $table->id();
             $table->foreignId('coupon_id')->constrained('takeads_coupons');
             $table->foreignId('category_id')->constrained('takeads_categories');
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->tableName);
+        Schema::dropIfExists($this->getTableName());
     }
 };
