@@ -2,6 +2,7 @@
 
 namespace Muscobytes\Laravel\Takeads\Suite\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,24 +13,26 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @mixin Builder
  * @mixin Eloquent
- * @property $id
- * @property $external_id
- * @property $external_numeric_id
- * @property $adspace_id
- * @property $merchant_id
- * @property $program_id
- * @property $status
- * @property $sub_id
- * @property $order_amount
- * @property $publisher_revenue
- * @property $currency_id
- * @property $type
- * @property $order_date
- * @property $remote_created_at
- * @property $remote_updated_at
- * @property $country_id
- * @property $click_id
- * @property $coupon_id
+ * @property int $id
+ * @property string $external_id
+ * @property int $external_numeric_id
+ * @property string $adspace_id
+ * @property int $merchant_id
+ * @property BelongsTo $merchant
+ * @property string $program_id
+ * @property string $status
+ * @property string $sub_id
+ * @property float $order_amount
+ * @property float $publisher_revenue
+ * @property int $currency_id
+ * @property BelongsTo $currency
+ * @property string $type
+ * @property DateTimeInterface $order_date
+ * @property DateTimeInterface $remote_created_at
+ * @property DateTimeInterface $remote_updated_at
+ * @property int $country_id
+ * @property string $click_id
+ * @property string $coupon_id
  */
 class Action extends Model
 {

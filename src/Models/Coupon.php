@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Collection;
-use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CouponFactory;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
 
 /**
@@ -29,7 +27,7 @@ use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
  * @property string $start_date
  * @property string $end_date
  * @property string $description
- * @property Collection<Country> $countries
+ * @property BelongsToMany $countries
  */
 class Coupon extends Model
 {
