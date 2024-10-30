@@ -3,12 +3,12 @@
 namespace Muscobytes\Laravel\Takeads\Suite\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
+use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\Merchant;
 
 class CouponFactory extends Factory
 {
-    protected $model = TakeadsCoupon::class;
+    protected $model = Coupon::class;
 
 
     /**
@@ -23,7 +23,7 @@ class CouponFactory extends Factory
             'tracking_link' => $this->faker->url(),
             'name' => $this->faker->words(rand(1, 5), true),
             'code' => $this->faker->optional($weight = 40)->regexify('[A-Za-z0-9]{6,10}'),
-            'merchant_id' => TakeadsMerchant::factory()->create(),
+            'merchant_id' => Merchant::factory()->create(),
             'image_uri' => $this->faker->imageUrl(),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),

@@ -5,11 +5,11 @@ namespace Muscobytes\Laravel\Takeads\Suite\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
+use Muscobytes\Laravel\Takeads\Suite\Models\Category;
+use Muscobytes\Laravel\Takeads\Suite\Models\Country;
+use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\Language;
+use Muscobytes\Laravel\Takeads\Suite\Models\Merchant;
 use Muscobytes\Laravel\TakeadsApi\TakeadsApi;
 use Muscobytes\Laravel\TraitsCollection\Console\Command\TableFormatter;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
@@ -76,7 +76,7 @@ class SearchCoupons extends Command implements PromptsForMissingInput
                         )
                     );
                     if (!$this->option('dry')) {
-                        TakeadsCoupon::updateOrCreateFromDto($couponDto);
+                        Coupon::updateOrCreateFromDto($couponDto);
                     }
                 }
             }

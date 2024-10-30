@@ -3,18 +3,18 @@
 namespace Muscobytes\Laravel\Takeads\Suite\Tests\Unit\Models;
 
 use DateTimeInterface;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsAction;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
+use Muscobytes\Laravel\Takeads\Suite\Models\Action;
+use Muscobytes\Laravel\Takeads\Suite\Models\Country;
+use Muscobytes\Laravel\Takeads\Suite\Models\Currency;
 use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(TakeadsAction::class)]
+#[CoversClass(Action::class)]
 class TakeadsActionTest extends TestCase
 {
     public function test_takeads_action_creation()
     {
-        $action = TakeadsAction::create([
+        $action = Action::create([
             'external_id' => '2673d88c-84c8-4ee7-a0e7-71f83292aeab',
             'external_numeric_id' => 94241012,
             'adspace_id' => '0c181f1f-92e6-43cc-927f-d179caf2a254',
@@ -24,17 +24,17 @@ class TakeadsActionTest extends TestCase
             'sub_id' => null,
             'order_amount' => 781.14,
             'publisher_revenue' => 8.65,
-            'currency_id' => TakeadsCurrency::firstOrCreate(['code' => 'EUR'])->first()->id,
+            'currency_id' => Currency::firstOrCreate(['code' => 'EUR'])->first()->id,
             'type' => 'SALE',
             'order_date' => '2024-08-01T02:10:50.000Z',
             'remote_created_at' => '2024-08-01T05:07:13.928Z',
             'remote_updated_at' => '2024-10-11T19:08:09.703Z',
-            'country_id' => TakeadsCountry::firstOrCreate(['code' => 'ES'])->first()->id,
+            'country_id' => Country::firstOrCreate(['code' => 'ES'])->first()->id,
             'click_id' => null,
             'coupon_id' => '0jYshT7wFBFhAkP2fO8Yf'
         ]);
 
-        $this->assertInstanceOf(TakeadsAction::class, $action);
+        $this->assertInstanceOf(Action::class, $action);
 
         $this->assertIsString($action->external_id);
         $this->assertSame($action->external_id, '2673d88c-84c8-4ee7-a0e7-71f83292aeab');

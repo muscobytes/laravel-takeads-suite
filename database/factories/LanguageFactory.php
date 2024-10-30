@@ -3,19 +3,19 @@
 namespace Muscobytes\Laravel\Takeads\Suite\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsLanguage;
+use Muscobytes\Laravel\Takeads\Suite\Models\Language;
 
 /**
- * @extends Factory<TakeadsLanguage>
+ * @extends Factory<Language>
  */
 class LanguageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<TakeadsLanguage>
+     * @var class-string<Language>
      */
-    protected $model = TakeadsLanguage::class;
+    protected $model = Language::class;
 
 
     /**

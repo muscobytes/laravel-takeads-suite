@@ -24,14 +24,14 @@ use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
  * @property string $name
  * @property string $code
  * @property int $merchant_id
- * @property TakeadsMerchant $merchant
+ * @property Merchant $merchant
  * @property string $image_uri
  * @property string $start_date
  * @property string $end_date
  * @property string $description
- * @property Collection<TakeadsCountry> $countries
+ * @property Collection<Country> $countries
  */
-class TakeadsCoupon extends Model
+class Coupon extends Model
 {
     use HasFactory;
 
@@ -56,7 +56,7 @@ class TakeadsCoupon extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupons');
     }
@@ -65,7 +65,7 @@ class TakeadsCoupon extends Model
     public function merchant(): BelongsTo
     {
         return $this->belongsTo(
-            related: TakeadsMerchant::class,
+            related: Merchant::class,
             foreignKey: 'merchant_id',
             ownerKey: 'id'
         );
@@ -75,7 +75,7 @@ class TakeadsCoupon extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(
-            related: TakeadsCategory::class,
+            related: Category::class,
             table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_category'),
             foreignPivotKey: 'coupon_id',
             relatedPivotKey: 'category_id'
@@ -86,7 +86,7 @@ class TakeadsCoupon extends Model
     public function countries(): BelongsToMany
     {
         return $this->belongsToMany(
-            related: TakeadsCountry::class,
+            related: Country::class,
             table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_country'),
             foreignPivotKey: 'coupon_id',
             relatedPivotKey: 'country_id'
@@ -97,7 +97,7 @@ class TakeadsCoupon extends Model
     public function languages(): BelongsToMany
     {
         return $this->belongsToMany(
-            related: TakeadsLanguage::class,
+            related: Language::class,
             table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_language'),
             foreignPivotKey: 'coupon_id',
             relatedPivotKey: 'language_id'
@@ -114,7 +114,7 @@ class TakeadsCoupon extends Model
             'tracking_link' => $couponDto->trackingLink,
             'name' => $couponDto->name,
             'code' => $couponDto->code,
-            'merchant_id' => TakeadsMerchant::firstOrCreate([
+            'merchant_id' => Merchant::firstOrCreate([
                 'external_id' => $couponDto->merchantId
             ], [
                 'is_active' => true,
@@ -126,21 +126,21 @@ class TakeadsCoupon extends Model
         ]);
 
         $coupon->languages()->attach(array_map(
-            fn ($languageCode) => TakeadsLanguage::firstOrCreate([
+            fn ($languageCode) => Language::firstOrCreate([
                 'code' => $languageCode
             ])->id,
             $couponDto->languageCodes
         ));
 
         $coupon->countries()->attach(array_map(
-            fn ($countryId) => TakeadsCountry::firstOrCreate([
+            fn ($countryId) => Country::firstOrCreate([
                 'code' => $countryId
             ])->id,
             $couponDto->countryCodes
         ));
 
         $coupon->categories()->attach(array_map(
-            fn ($categoryId) => TakeadsCategory::firstOrCreate([
+            fn ($categoryId) => Category::firstOrCreate([
                 'external_id' => $categoryId
             ])->id,
             $couponDto->categoryIds

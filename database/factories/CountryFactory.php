@@ -3,19 +3,19 @@
 namespace Muscobytes\Laravel\Takeads\Suite\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
+use Muscobytes\Laravel\Takeads\Suite\Models\Country;
 
 /**
- * @extends Factory<TakeadsCountry>
+ * @extends Factory<Country>
  */
 class CountryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<TakeadsCountry>
+     * @var class-string<Country>
      */
-    protected $model = TakeadsCountry::class;
+    protected $model = Country::class;
 
 
     /**

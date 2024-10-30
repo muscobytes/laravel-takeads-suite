@@ -5,10 +5,10 @@ namespace Muscobytes\Laravel\Takeads\Suite\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCountry;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCurrency;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsMerchant;
+use Muscobytes\Laravel\Takeads\Suite\Models\Category;
+use Muscobytes\Laravel\Takeads\Suite\Models\Country;
+use Muscobytes\Laravel\Takeads\Suite\Models\Currency;
+use Muscobytes\Laravel\Takeads\Suite\Models\Merchant;
 use Muscobytes\Laravel\TakeadsApi\TakeadsApi;
 use Muscobytes\Laravel\TraitsCollection\Console\Command\TableFormatter;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V2\Merchant\MerchantDto;
@@ -88,19 +88,19 @@ class ImportMerchants extends Command implements PromptsForMissingInput
                             [ 12, 40, 30 ]
                         )
                     );
-                    $taMerchant = TakeadsMerchant::updateOrCreate(
+                    $taMerchant = Merchant::updateOrCreate(
                         [
                             'external_id' => $merchant->merchantId
                         ],
                         [
                             'name' => $merchant->name,
                             'image_uri' => $merchant->imageUri,
-                            'currency_id' => TakeadsCurrency::firstOrCreate([
+                            'currency_id' => Currency::firstOrCreate([
                                 'code' => $merchant->currencyCode
                             ])->id,
                             'default_domain' => $merchant->defaultDomain,
                             'domains' => json_encode($merchant->domains),
-                            'category_id' => is_null($merchant->categoryId) ? null : TakeadsCategory::firstOrCreate([
+                            'category_id' => is_null($merchant->categoryId) ? null : Category::firstOrCreate([
                                 'external_id' => $merchant->categoryId
                             ])->id,
                             'description' => $merchant->description,
@@ -110,7 +110,7 @@ class ImportMerchants extends Command implements PromptsForMissingInput
                     );
                     $taMerchant->countries()->attach(array_map(
                         function($countryCode) {
-                            return TakeadsCountry::firstOrCreate(['code' => $countryCode])->id;
+                            return Country::firstOrCreate(['code' => $countryCode])->id;
                         },
                         $merchant->countryCodes
                     ));

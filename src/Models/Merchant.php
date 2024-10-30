@@ -28,7 +28,7 @@ use Muscobytes\Laravel\Takeads\Suite\Database\Factories\MerchantFactory;
  * @property boolean $is_active
  * @property string $tracking_link
  */
-class TakeadsMerchant extends Model
+class Merchant extends Model
 {
     use HasFactory;
 
@@ -56,7 +56,7 @@ class TakeadsMerchant extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.merchants');
     }
@@ -64,18 +64,18 @@ class TakeadsMerchant extends Model
 
     public function currency(): BelongsTo
     {
-        return $this->belongsTo(TakeadsCurrency::class);
+        return $this->belongsTo(Currency::class);
     }
 
 
     public function countries(): BelongsToMany
     {
-        return $this->BelongsToMany(TakeadsCountry::class, 'takeads_merchant_country', 'merchant_id', 'country_id');
+        return $this->BelongsToMany(Country::class, 'takeads_merchant_country', 'merchant_id', 'country_id');
     }
 
 
     public function coupons(): hasMany
     {
-        return $this->hasMany(TakeadsCoupon::class, 'merchant_id');
+        return $this->hasMany(Coupon::class, 'merchant_id');
     }
 }

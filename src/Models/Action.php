@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property $click_id
  * @property $coupon_id
  */
-class TakeadsAction extends Model
+class Action extends Model
 {
     use HasFactory;
 
@@ -62,7 +62,7 @@ class TakeadsAction extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.actions');
     }
@@ -71,7 +71,7 @@ class TakeadsAction extends Model
     public function merchant(): BelongsTo
     {
         return $this->belongsTo(
-            related: TakeadsMerchant::class,
+            related: Merchant::class,
             foreignKey: 'merchant_id',
             ownerKey: 'id',
             relation: 'merchant'
@@ -82,7 +82,7 @@ class TakeadsAction extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(
-            related: TakeadsCurrency::class,
+            related: Currency::class,
             foreignKey: 'currency_id',
             ownerKey: 'id',
             relation: 'currency'

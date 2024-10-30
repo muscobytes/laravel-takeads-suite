@@ -3,16 +3,16 @@
 namespace Muscobytes\Laravel\Takeads\Suite\Tests\Unit\Models;
 
 use DateTimeInterface;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
 use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(TakeadsCoupon::class)]
+#[CoversClass(Coupon::class)]
 class TakeadsCouponTest extends TestCase
 {
     public function test_coupon_model_creation()
     {
-        $coupon = TakeadsCoupon::create([
+        $coupon = Coupon::create([
             'external_id' => '003vzm1sl12i4vxnJkk7O',
             'is_active' => true,
             'tracking_link' => 'https://tatrck.com/h/1Hu',
@@ -25,7 +25,7 @@ class TakeadsCouponTest extends TestCase
             'description' => 'Description and other conditions'
         ]);
 
-        $this->assertInstanceOf(TakeadsCoupon::class, $coupon);
+        $this->assertInstanceOf(Coupon::class, $coupon);
 
         $this->assertIsString($coupon->external_id);
         $this->assertEquals('003vzm1sl12i4vxnJkk7O', $coupon->external_id);

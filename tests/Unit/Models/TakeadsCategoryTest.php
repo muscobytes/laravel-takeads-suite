@@ -2,35 +2,35 @@
 
 namespace Muscobytes\Laravel\Takeads\Suite\Tests\Unit\Models;
 
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCategory;
-use Muscobytes\Laravel\Takeads\Suite\Models\TakeadsCoupon;
+use Muscobytes\Laravel\Takeads\Suite\Models\Category;
+use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
 use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(TakeadsCategory::class)]
+#[CoversClass(Category::class)]
 class TakeadsCategoryTest extends TestCase
 {
     public function test_category_creation()
     {
         $external_id = 43;
-        $category = TakeadsCategory::create([
+        $category = Category::create([
             'external_id' => 43
         ]);
         $this->assertNotNull($category);
         $this->assertIsInt($category->external_id);
         $this->assertSame($category->external_id, $external_id);
-        $this->assertEquals(1, TakeadsCategory::count());
+        $this->assertEquals(1, Category::count());
     }
 
 
     public function test_category_coupon_relation()
     {
-        $category = TakeadsCategory::create([
+        $category = Category::create([
             'external_id' => 43
         ]);
         $this->assertEquals($category->coupons()->count(), 0);
 
-        $coupon = TakeadsCoupon::create([
+        $coupon = Coupon::create([
             'external_id' => '0103Gkr5QEPahe6calErk',
             'is_active' => true,
             'tracking_link' => 'https://tatrck.com/h/1Hu30zX',

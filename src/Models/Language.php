@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CountryFactory;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\LanguageFactory;
 
 
 /**
@@ -15,10 +15,8 @@ use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CountryFactory;
  *
  * @mixin Builder
  * @mixin Eloquent
- * @property int $id
- * @property string $code
  */
-class TakeadsCountry extends Model
+class Language extends Model
 {
     use HasFactory;
 
@@ -28,17 +26,19 @@ class TakeadsCountry extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
-        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.countries');
+        return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.languages');
     }
 
 
     public function coupons(): BelongsToMany
     {
         return $this->belongsToMany(
-            related: TakeadsCoupon::class,
-            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_country'),
+            related: Coupon::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_language'),
+            foreignPivotKey: 'language_id',
+            relatedPivotKey: 'coupon_id',
         );
     }
 }

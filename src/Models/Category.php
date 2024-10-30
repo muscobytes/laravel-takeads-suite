@@ -19,7 +19,7 @@ use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CategoryFactory;
  * @property int $id
  * @property int $external_id
  */
-class TakeadsCategory extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -29,7 +29,7 @@ class TakeadsCategory extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.categories');
     }
@@ -38,7 +38,7 @@ class TakeadsCategory extends Model
     public function coupons(): BelongsToMany
     {
         return $this->belongsToMany(
-            related: TakeadsCoupon::class,
+            related: Coupon::class,
             table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_category'),
             foreignPivotKey: 'category_id',
             relatedPivotKey: 'coupon_id'
@@ -49,7 +49,7 @@ class TakeadsCategory extends Model
     public function merchants(): BelongsTo
     {
         return $this->belongsTo(
-            related: TakeadsMerchant::class,
+            related: Merchant::class,
             foreignKey: 'category_id'
         );
     }

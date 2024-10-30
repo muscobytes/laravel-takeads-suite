@@ -17,7 +17,7 @@ use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CurrencyFactory;
  * @property int $id
  * @property string $code
  */
-class TakeadsCurrency extends Model
+class Currency extends Model
 {
     use HasFactory;
 
@@ -27,7 +27,7 @@ class TakeadsCurrency extends Model
     ];
 
 
-    public static function getTableName(): string
+    public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.currencies');
     }
@@ -36,7 +36,7 @@ class TakeadsCurrency extends Model
     public function merchants(): HasMany
     {
         return $this->hasMany(
-            related: TakeadsMerchant::class
+            related: Merchant::class
         );
     }
 
@@ -44,7 +44,7 @@ class TakeadsCurrency extends Model
     public function coupons(): HasMany
     {
         return $this->hasMany(
-            related: TakeadsCoupon::class
+            related: Coupon::class
         );
     }
 }
