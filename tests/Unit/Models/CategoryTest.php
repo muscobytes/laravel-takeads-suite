@@ -4,10 +4,13 @@ namespace Muscobytes\Laravel\Takeads\Suite\Tests\Unit\Models;
 
 use Muscobytes\Laravel\Takeads\Suite\Models\Category;
 use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
+use Muscobytes\Laravel\Takeads\Suite\Providers\TakeadsSuiteServiceProvider;
 use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Category::class)]
+#[CoversClass(Coupon::class)]
+#[CoversClass(TakeadsSuiteServiceProvider::class)]
 class CategoryTest extends TestCase
 {
     public function test_category_creation()

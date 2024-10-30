@@ -5,11 +5,17 @@ namespace Muscobytes\Laravel\Takeads\Suite\Tests\Unit\Models;
 use DateTimeInterface;
 use Muscobytes\Laravel\Takeads\Suite\Models\Action;
 use Muscobytes\Laravel\Takeads\Suite\Models\Country;
+use Muscobytes\Laravel\Takeads\Suite\Models\Coupon;
 use Muscobytes\Laravel\Takeads\Suite\Models\Currency;
+use Muscobytes\Laravel\Takeads\Suite\Providers\TakeadsSuiteServiceProvider;
 use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Action::class)]
+#[CoversClass(Country::class)]
+#[CoversClass(Currency::class)]
+#[CoversClass(Coupon::class)]
+#[CoversClass(TakeadsSuiteServiceProvider::class)]
 class ActionTest extends TestCase
 {
     public function test_takeads_action_creation()

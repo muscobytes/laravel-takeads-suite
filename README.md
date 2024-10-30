@@ -1,5 +1,7 @@
 # Takeads Suite for Laravel
 
+[![codecov](https://codecov.io/gh/muscobytes/laravel-takeads-suite/graph/badge.svg?token=S7FUfkODTe)](https://codecov.io/gh/muscobytes/laravel-takeads-suite)
+
 ## Database seeder
 
 ```shell
