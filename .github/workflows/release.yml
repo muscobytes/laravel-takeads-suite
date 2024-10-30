@@ -29,6 +29,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.xml
+          test_suffix: Test.php
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
