@@ -24,12 +24,12 @@ jobs:
           php_version: '8.2'
           php_extensions: xdebug
           args: tests --coverage-clover coverage.xml
+          test_suffix: Test.php
       - name: Code coverage
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.xml
-          test_suffix: Test.php
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
