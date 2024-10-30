@@ -15,9 +15,20 @@ jobs:
         with:
           php-version: '8.2'
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-      - name: Run Tests
-        run: ./vendor/bin/phpunit
+        uses: php-actions/composer@v6
+      - name: Run PHPUnit
+        uses: php-actions/phpunit@v3
+        env:
+          XDEBUG_MODE: coverage
+        with:
+          php_version: '8.2'
+          php_extensions: xdebug
+          args: tests --coverage-clover coverage.xml
+      - name: Code coverage
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
