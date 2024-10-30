@@ -34,6 +34,11 @@ class TakeadsLanguage extends Model
 
     public function coupons(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsCoupon::class, 'takeads_coupon_language');
+        return $this->belongsToMany(
+            related: TakeadsCoupon::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_language'),
+            foreignPivotKey: 'language_id',
+            relatedPivotKey: 'coupon_id',
+        );
     }
 }

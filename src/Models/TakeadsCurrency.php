@@ -35,12 +35,16 @@ class TakeadsCurrency extends Model
 
     public function merchants(): HasMany
     {
-        return $this->hasMany(TakeadsMerchant::class);
+        return $this->hasMany(
+            related: TakeadsMerchant::class
+        );
     }
 
 
     public function coupons(): HasMany
     {
-        return $this->hasMany(TakeadsCoupon::class);
+        return $this->hasMany(
+            related: TakeadsCoupon::class
+        );
     }
 }

@@ -39,7 +39,7 @@ class TakeadsCategory extends Model
     {
         return $this->belongsToMany(
             related: TakeadsCoupon::class,
-            table: 'takeads_coupon_category',
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_category'),
             foreignPivotKey: 'category_id',
             relatedPivotKey: 'coupon_id'
         );

@@ -36,6 +36,9 @@ class TakeadsCountry extends Model
 
     public function coupons(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsCoupon::class, 'takeads_coupon_country');
+        return $this->belongsToMany(
+            related: TakeadsCoupon::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_country'),
+        );
     }
 }

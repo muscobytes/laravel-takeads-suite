@@ -35,6 +35,7 @@ class TakeadsCoupon extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'external_id',
         'is_active',
@@ -63,25 +64,44 @@ class TakeadsCoupon extends Model
 
     public function merchant(): BelongsTo
     {
-        return $this->belongsTo(TakeadsMerchant::class, 'merchant_id', 'id');
+        return $this->belongsTo(
+            related: TakeadsMerchant::class,
+            foreignKey: 'merchant_id',
+            ownerKey: 'id'
+        );
     }
 
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsCategory::class, 'takeads_coupon_category', 'coupon_id', 'category_id');
+        return $this->belongsToMany(
+            related: TakeadsCategory::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_category'),
+            foreignPivotKey: 'coupon_id',
+            relatedPivotKey: 'category_id'
+        );
     }
 
 
     public function countries(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsCountry::class, 'takeads_coupon_country', 'coupon_id', 'country_id');
+        return $this->belongsToMany(
+            related: TakeadsCountry::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_country'),
+            foreignPivotKey: 'coupon_id',
+            relatedPivotKey: 'country_id'
+        );
     }
 
 
     public function languages(): BelongsToMany
     {
-        return $this->belongsToMany(TakeadsLanguage::class, 'takeads_coupon_language', 'coupon_id', 'language_id');
+        return $this->belongsToMany(
+            related: TakeadsLanguage::class,
+            table: config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupon_language'),
+            foreignPivotKey: 'coupon_id',
+            relatedPivotKey: 'language_id'
+        );
     }
 
 
