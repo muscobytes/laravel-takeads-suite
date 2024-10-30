@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CurrencyFactory;
 
 
 /**
@@ -30,6 +31,12 @@ class Currency extends Model
     public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.currencies');
+    }
+
+
+    protected static function newFactory(): string
+    {
+        return CurrencyFactory::class;
     }
 
 

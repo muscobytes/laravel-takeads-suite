@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CouponFactory;
 use Muscobytes\TakeadsApi\Dto\V1\Monetize\V1\CouponSearch\CouponDto;
 
 /**
@@ -59,6 +60,11 @@ class Coupon extends Model
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.coupons');
     }
 
+
+    protected static function newFactory(): string
+    {
+        return CouponFactory::class;
+    }
 
     public function merchant(): BelongsTo
     {

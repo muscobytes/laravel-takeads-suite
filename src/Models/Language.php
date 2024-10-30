@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\LanguageFactory;
 
 
 /**
@@ -28,6 +29,12 @@ class Language extends Model
     public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.languages');
+    }
+
+
+    protected static function newFactory(): string
+    {
+        return LanguageFactory::class;
     }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\CountryFactory;
 
 
 /**
@@ -32,6 +33,11 @@ class Country extends Model
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.countries');
     }
 
+
+    protected static function newFactory(): string
+    {
+        return CountryFactory::class;
+    }
 
     public function coupons(): BelongsToMany
     {

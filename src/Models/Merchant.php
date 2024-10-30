@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\MerchantFactory;
 
 
 /**
@@ -59,6 +60,12 @@ class Merchant extends Model
     public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.merchants');
+    }
+
+
+    protected static function newFactory(): string
+    {
+        return MerchantFactory::class;
     }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Muscobytes\Laravel\Takeads\Suite\Database\Factories\ActionFactory;
 
 /**
  * TakeadsAction
@@ -68,6 +69,12 @@ class Action extends Model
     public function getTable(): string
     {
         return config('takeads.suite.table_prefix') . config('takeads.suite.table_names.actions');
+    }
+
+
+    protected static function newFactory(): string
+    {
+        return ActionFactory::class;
     }
 
 
