@@ -10,7 +10,7 @@ use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Action::class)]
-class TakeadsActionTest extends TestCase
+class ActionTest extends TestCase
 {
     public function test_takeads_action_creation()
     {

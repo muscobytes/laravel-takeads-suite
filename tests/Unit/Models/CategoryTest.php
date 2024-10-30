@@ -8,7 +8,7 @@ use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Category::class)]
-class TakeadsCategoryTest extends TestCase
+class CategoryTest extends TestCase
 {
     public function test_category_creation()
     {

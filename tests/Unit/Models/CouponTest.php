@@ -8,7 +8,7 @@ use Muscobytes\Laravel\Takeads\Suite\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Coupon::class)]
-class TakeadsCouponTest extends TestCase
+class CouponTest extends TestCase
 {
     public function test_coupon_model_creation()
     {
