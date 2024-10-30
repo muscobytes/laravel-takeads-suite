@@ -2,12 +2,8 @@
 
 [![codecov](https://codecov.io/gh/muscobytes/laravel-takeads-suite/graph/badge.svg?token=S7FUfkODTe)](https://codecov.io/gh/muscobytes/laravel-takeads-suite)
 
-## Database seeder
-
+## Installation
+- Publish config and migrations with:
 ```shell
-php artisan db:seed --class="Muscobytes\Laravel\Takeads\Suite\Database\Seeders\LocalSeeder"
-```
-
-```shell
-php artisan migrate:fresh --seeder="Muscobytes\Laravel\Takeads\Suite\Database\Seeders\LocalSeeder"
+php artisan vendor:publish --provider="Muscobytes\Laravel\Takeads\Suite\Providers\TakeadsSuiteServiceProvider"
 ```

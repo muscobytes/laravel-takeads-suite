@@ -37,12 +37,15 @@ class TakeadsSuiteServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any package services.
+     * @throws BindingResolutionException
      */
     public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/../../config/takeads.php' => config_path('takeads.php'),
         ]);
+
+        $this->registerMigrations(__DIR__ . '/../../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
