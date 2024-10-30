@@ -72,9 +72,9 @@ class Action extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): ActionFactory
     {
-        return ActionFactory::class;
+        return ActionFactory::new();
     }
 
 

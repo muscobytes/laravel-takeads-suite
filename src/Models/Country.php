@@ -34,9 +34,9 @@ class Country extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): CountryFactory
     {
-        return CountryFactory::class;
+        return CountryFactory::new();
     }
 
     public function coupons(): BelongsToMany

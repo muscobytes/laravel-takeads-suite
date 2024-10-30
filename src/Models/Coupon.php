@@ -61,9 +61,9 @@ class Coupon extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): CouponFactory
     {
-        return CouponFactory::class;
+        return CouponFactory::new();
     }
 
     public function merchant(): BelongsTo

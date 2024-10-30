@@ -35,9 +35,9 @@ class Category extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): CategoryFactory
     {
-        return CategoryFactory::class;
+        return CategoryFactory::new();
     }
 
 

@@ -32,9 +32,9 @@ class Language extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): LanguageFactory
     {
-        return LanguageFactory::class;
+        return LanguageFactory::new();
     }
 
 

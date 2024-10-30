@@ -63,9 +63,9 @@ class Merchant extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): MerchantFactory
     {
-        return MerchantFactory::class;
+        return MerchantFactory::new();
     }
 
 

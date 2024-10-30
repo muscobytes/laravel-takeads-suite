@@ -34,9 +34,9 @@ class Currency extends Model
     }
 
 
-    protected static function newFactory(): string
+    protected static function newFactory(): CurrencyFactory
     {
-        return CurrencyFactory::class;
+        return CurrencyFactory::new();
     }
 
 
